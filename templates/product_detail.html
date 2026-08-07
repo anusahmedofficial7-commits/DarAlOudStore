@@ -1,0 +1,418 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+{{ perfume.name }} | Dar Al Oud
+{% endblock %}
+
+
+{% block content %}
+
+<section class="container py-5">
+
+<div class="row g-4">
+
+
+<!-- ================= IMAGE SECTION ================= -->
+
+<div class="col-lg-6">
+
+<div class="card shadow border-0">
+
+{% if perfume.image %}
+
+<img src="{{ perfume.image.url }}"
+     class="img-fluid rounded"
+     alt="{{ perfume.name }}">
+
+{% else %}
+
+<img src="{% static 'images/no-image.png' %}"
+     class="img-fluid rounded"
+     alt="No Image">
+
+{% endif %}
+
+</div>
+
+</div>
+
+
+
+<!-- ================= PRODUCT DETAILS ================= -->
+
+<div class="col-lg-6">
+
+<h1 class="fw-bold">
+{{ perfume.name }}
+</h1>
+
+<h5 class="text-muted">
+Brand: {{ perfume.brand }}
+</h5>
+
+<p class="mt-3">
+{{ perfume.description }}
+</p>
+
+
+<div class="mt-3">
+
+<span class="badge bg-dark">
+{{ perfume.category }}
+</span>
+
+</div>
+
+
+<hr>
+<!-- ================= SIZE SELECTION ================= -->
+
+<h4 class="mt-4 fw-bold">
+Select Size
+</h4>
+
+
+<div class="row g-3">
+
+
+{% for size in perfume.sizes.all %}
+
+<div class="col-md-3 col-6">
+
+
+<div class="card text-center shadow-sm border">
+
+<div class="card-body">
+
+
+<h5 class="fw-bold">
+{{ size.size }}
+</h5>
+
+
+<p class="text-success fw-bold">
+
+Rs. {{ size.price }}
+
+</p>
+
+
+<form method="POST" action="{% url 'add_to_cart' perfume.id %}">
+
+{% csrf_token %}
+
+
+<input type="hidden"
+       name="size_id"
+       value="{{ size.id }}">
+
+
+<button type="submit"
+        class="btn btn-dark w-100">
+
+Add To Cart
+
+</button>
+
+
+</form>
+
+
+</div>
+
+</div>
+
+
+</div>
+
+
+{% empty %}
+
+
+<div class="alert alert-warning">
+
+No sizes available
+
+</div>
+
+
+{% endfor %}
+
+
+</div>
+<!-- ================= WISHLIST ================= -->
+
+<div class="mt-4">
+
+
+<form method="POST" action="{% url 'add_to_wishlist' perfume.id %}">
+
+{% csrf_token %}
+
+
+<button type="submit"
+        class="btn btn-outline-danger">
+
+❤️ Add To Wishlist
+
+</button>
+
+
+</form>
+
+
+</div>
+
+
+
+<!-- ================= PRODUCT INFORMATION ================= -->
+
+
+<div class="mt-5">
+
+
+<h4 class="fw-bold">
+Product Information
+</h4>
+
+
+<table class="table table-bordered">
+
+
+<tr>
+
+<th>
+Name
+</th>
+
+<td>
+{{ perfume.name }}
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<th>
+Brand
+</th>
+
+<td>
+{{ perfume.brand }}
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<th>
+Category
+</th>
+
+<td>
+{{ perfume.category }}
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<th>
+Available Stock
+</th>
+
+<td>
+{{ perfume.stock }}
+</td>
+
+</tr>
+
+
+</table>
+
+
+</div>
+<!-- ================= LUXURY FEATURES ================= -->
+
+
+<div class="row mt-5 g-4">
+
+
+<div class="col-md-4">
+
+<div class="card shadow border-0 text-center p-3">
+
+<h5>
+🌹 Premium Fragrance
+</h5>
+
+<p>
+Long lasting luxury perfume collection.
+</p>
+
+</div>
+
+</div>
+
+
+
+
+<div class="col-md-4">
+
+<div class="card shadow border-0 text-center p-3">
+
+<h5>
+✨ Original Quality
+</h5>
+
+<p>
+High quality ingredients with elegant aroma.
+</p>
+
+</div>
+
+</div>
+
+
+
+
+<div class="col-md-4">
+
+<div class="card shadow border-0 text-center p-3">
+
+<h5>
+🚚 Fast Delivery
+</h5>
+
+<p>
+Safe and quick delivery across Pakistan.
+</p>
+
+</div>
+
+</div>
+
+
+</div>
+<!-- ================= RELATED PRODUCTS ================= -->
+
+
+<div class="mt-5">
+
+
+<h3 class="fw-bold mb-4">
+Related Perfumes
+</h3>
+
+
+<div class="row g-4">
+
+
+{% for item in related_products %}
+
+
+<div class="col-lg-3 col-md-4 col-6">
+
+
+<div class="card shadow-sm border-0">
+
+
+{% if item.image %}
+
+<img src="{{ item.image.url }}"
+     class="card-img-top"
+     style="height:250px; object-fit:cover;">
+
+{% endif %}
+
+
+
+<div class="card-body">
+
+
+<h6 class="fw-bold">
+{{ item.name }}
+</h6>
+
+
+<p class="text-muted">
+{{ item.brand }}
+</p>
+
+
+<a href="{% url 'product_detail' item.id %}"
+   class="btn btn-outline-dark btn-sm w-100">
+
+View Product
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+{% empty %}
+
+
+<p>
+No related products available.
+</p>
+
+
+{% endfor %}
+
+
+</div>
+
+
+</div>
+<!-- ================= END PRODUCT SECTION ================= -->
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+
+<footer class="bg-dark text-white text-center py-4">
+
+
+<h5>
+Dar Al Oud
+</h5>
+
+
+<p class="mb-0">
+Luxury Perfume Collection
+</p>
+
+
+<p class="mb-0">
+© 2026 Dar Al Oud. All Rights Reserved.
+</p>
+
+
+</footer>
+
+
+
+{% endblock %}

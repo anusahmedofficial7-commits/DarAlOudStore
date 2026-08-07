@@ -1,0 +1,450 @@
+/* ==========================================
+   DAR AL OUD
+   LUXURY PERFUME STORE
+========================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;
+    color:#222;
+    overflow-x:hidden;
+
+    background:
+    radial-gradient(circle at top left,#f8e6a3 0%,transparent 25%),
+    radial-gradient(circle at bottom right,#f0d27b 0%,transparent 25%),
+    linear-gradient(135deg,#faf8f2,#efe3c2,#fdfcf9);
+
+    background-attachment:fixed;
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#eee;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#d4af37;
+    border-radius:20px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#000;
+}
+
+/* Links */
+
+a{
+    text-decoration:none;
+}
+
+/* Container */
+
+.container{
+    position:relative;
+    z-index:2;
+}
+/* ==========================================
+   NAVBAR
+========================================== */
+
+.navbar{
+    background:#000 !important;
+    padding:15px 0;
+    box-shadow:0 5px 20px rgba(0,0,0,.25);
+}
+
+.navbar-brand{
+    color:#d4af37 !important;
+    font-size:30px;
+    font-weight:700;
+}
+
+.nav-link{
+    color:#fff !important;
+    font-size:17px;
+    margin-left:18px;
+    transition:.3s;
+}
+
+.nav-link:hover,
+.nav-link.active{
+    color:#d4af37 !important;
+}
+
+/* ==========================================
+   BUTTONS
+========================================== */
+
+.btn{
+    border-radius:10px;
+    transition:.3s;
+}
+
+.btn-dark{
+    background:#000;
+    border:none;
+}
+
+.btn-dark:hover{
+    background:#d4af37;
+    color:#000;
+}
+
+.btn-warning{
+    background:#d4af37;
+    border:none;
+    color:#000;
+}
+
+.btn-warning:hover{
+    background:#000;
+    color:#fff;
+}
+
+/* ==========================================
+   HERO
+========================================== */
+
+.hero{
+    padding:80px 40px;
+    border-radius:20px;
+    margin-top:20px;
+
+    background:
+    linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+    url("../images/hero.jpg");
+
+    background-size:cover;
+    background-position:center;
+
+    color:#fff;
+}
+
+.hero h1{
+    font-size:60px;
+    font-weight:bold;
+}
+
+.hero p{
+    font-size:20px;
+    color:#eee;
+    margin-top:20px;
+    max-width:700px;
+}
+
+.hero .btn{
+    margin-top:20px;
+}
+/* ==========================================
+   CATEGORY SECTION
+========================================== */
+
+.category-box,
+.card{
+    background:#fff;
+    border:none;
+    border-radius:18px;
+    overflow:hidden;
+    transition:.35s;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.category-box{
+    padding:30px;
+    text-align:center;
+}
+
+.category-box:hover,
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 20px 45px rgba(0,0,0,.18);
+}
+
+.category-box h4{
+    font-weight:700;
+    margin-top:15px;
+}
+
+.category-box:hover{
+    background:#111;
+    color:#fff;
+}
+
+.category-box:hover h4{
+    color:#d4af37;
+}
+
+/* ==========================================
+   PRODUCT CARD
+========================================== */
+
+.card-img-top{
+    height:320px;
+    object-fit:cover;
+    transition:.4s;
+}
+
+.card:hover .card-img-top{
+    transform:scale(1.05);
+}
+
+.card-body{
+    padding:25px;
+}
+
+.card h4{
+    font-weight:700;
+}
+
+.card p{
+    color:#666;
+}
+
+.card h3,
+.price{
+    color:#d4af37;
+    font-weight:bold;
+}
+
+.card .btn{
+    margin-top:8px;
+}
+
+.card-img-top:hover{
+    filter:brightness(95%);
+}
+
+/* ==========================================
+   PRODUCT DETAIL
+========================================== */
+
+.product-image img{
+    width:100%;
+    border-radius:18px;
+}
+
+.stock{
+    font-weight:600;
+}
+
+.badge{
+    padding:10px 18px;
+    font-size:15px;
+}
+/* ==========================================
+   TABLES
+========================================== */
+
+.table{
+    background:#fff;
+    border-radius:15px;
+    overflow:hidden;
+}
+
+.table th{
+    background:#000;
+    color:#fff;
+    text-align:center;
+}
+
+.table td{
+    vertical-align:middle;
+    text-align:center;
+}
+
+.table img{
+    border-radius:10px;
+}
+
+/* ==========================================
+   FORMS
+========================================== */
+
+.form-control,
+textarea{
+    border-radius:10px;
+    border:1px solid #ddd;
+    padding:12px;
+}
+
+.form-control:focus,
+textarea:focus{
+    border-color:#d4af37;
+    box-shadow:0 0 12px rgba(212,175,55,.35);
+}
+
+.search-box{
+    max-width:500px;
+    margin:auto;
+}
+
+.search-box .form-control{
+    border-radius:50px;
+}
+
+.search-box .btn{
+    border-radius:50px;
+}
+
+/* ==========================================
+   SUCCESS PAGE
+========================================== */
+
+.success-icon{
+    font-size:90px;
+    color:#28a745;
+}
+
+/* ==========================================
+   TRACK ORDER
+========================================== */
+
+.progress{
+    height:12px;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    background:#d4af37;
+}
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+footer{
+    background:#000;
+    color:#fff;
+    padding:60px 0 20px;
+    margin-top:70px;
+}
+
+footer h4,
+footer h5{
+    color:#d4af37;
+    font-weight:700;
+}
+
+footer a{
+    color:#fff;
+    transition:.3s;
+}
+
+footer a:hover{
+    color:#d4af37;
+}
+
+footer hr{
+    border-color:#444;
+}
+
+/* ==========================================
+   ANIMATIONS
+========================================== */
+
+img{
+    max-width:100%;
+}
+
+.card,
+.btn,
+.category-box{
+    transition:.35s ease;
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width:992px){
+
+.hero{
+    padding:60px 30px;
+}
+
+.hero h1{
+    font-size:42px;
+}
+
+.navbar-brand{
+    font-size:26px;
+}
+
+.card-img-top{
+    height:260px;
+}
+
+}
+
+@media (max-width:768px){
+
+.hero{
+    text-align:center;
+    padding:50px 20px;
+}
+
+.hero h1{
+    font-size:34px;
+}
+
+.hero p{
+    font-size:17px;
+}
+
+.card-img-top{
+    height:230px;
+}
+
+.table{
+    font-size:14px;
+}
+
+.btn{
+    width:100%;
+    margin-bottom:10px;
+}
+
+footer{
+    text-align:center;
+}
+
+}
+
+@media (max-width:576px){
+
+.hero h1{
+    font-size:28px;
+}
+
+.navbar-brand{
+    font-size:22px;
+}
+
+.card-body{
+    padding:18px;
+}
+
+.card-img-top{
+    height:200px;
+}
+
+}
+
+/* ==========================================
+   END OF FILE
+========================================== */

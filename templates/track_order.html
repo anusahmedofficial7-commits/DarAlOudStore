@@ -1,0 +1,251 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Track Order | Dar Al Oud
+{% endblock %}
+
+{% block content %}
+
+<section class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-8">
+
+            <div class="card shadow border-0">
+
+                <div class="card-body p-5">
+
+                    <h1 class="text-center fw-bold mb-3">
+                        Track Your Order
+                    </h1>
+
+                    <p class="text-center text-muted mb-5">
+                        Enter your Order ID and Phone Number to check your order status.
+                    </p>
+
+                    <form method="POST">
+
+                        {% csrf_token %}
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Order ID
+                            </label>
+
+                            <input
+                                type="number"
+                                name="order_id"
+                                class="form-control"
+                                placeholder="Enter Order ID"
+                                required>
+
+                        </div>
+
+                        <div class="mb-4">
+
+                            <label class="form-label">
+                                Phone Number
+                            </label>
+
+                            <input
+                                type="text"
+                                name="phone"
+                                class="form-control"
+                                placeholder="03XXXXXXXXX"
+                                required>
+
+                        </div>
+
+                        <div class="d-grid">
+
+                            <button
+                                type="submit"
+                                class="btn btn-dark btn-lg">
+
+                                Track Order
+
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                    {% if error %}
+
+                    <div class="alert alert-danger mt-4">
+                        {{ error }}
+                    </div>
+
+                    {% endif %}
+
+                    {% if order %}
+
+                    <hr class="my-5">
+
+                    <div class="card bg-light border-0">
+
+                        <div class="card-body">
+
+                            <h3 class="fw-bold mb-4">
+                                Order Details
+                            </h3>
+
+                            <table class="table table-bordered align-middle">
+
+                                <tr>
+                                    <th width="35%">Order ID</th>
+                                    <td>#{{ order.id }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>Customer Name</th>
+                                    <td>{{ order.customer_name }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>Phone</th>
+                                    <td>{{ order.phone }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>Perfume</th>
+                                    <td>{{ order.perfume.name }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>Quantity</th>
+                                    <td>{{ order.quantity }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>Total Price</th>
+                                    <td>Rs. {{ order.total_price }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>Payment Method</th>
+                                    <td>{{ order.payment_method }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>Transaction ID</th>
+                                    <td>
+                                        {% if order.transaction_id %}
+                                            {{ order.transaction_id }}
+                                        {% else %}
+                                            Not Available
+                                        {% endif %}
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>Payment Status</th>
+                                    <td>
+
+                                        {% if order.payment_status == "Paid" %}
+
+                                            <span class="badge bg-success">
+                                                Paid
+                                            </span>
+
+                                        {% elif order.payment_status == "Rejected" %}
+
+                                            <span class="badge bg-danger">
+                                                Rejected
+                                            </span>
+
+                                        {% else %}
+
+                                            <span class="badge bg-warning text-dark">
+                                                Pending
+                                            </span>
+
+                                        {% endif %}
+
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>Order Status</th>
+                                    <td>
+
+                                        {% if order.status == "Delivered" %}
+
+                                            <span class="badge bg-success">
+                                                Delivered
+                                            </span>
+
+                                        {% elif order.status == "Shipped" %}
+
+                                            <span class="badge bg-primary">
+                                                Shipped
+                                            </span>
+
+                                        {% elif order.status == "Cancelled" %}
+
+                                            <span class="badge bg-danger">
+                                                Cancelled
+                                            </span>
+
+                                        {% elif order.status == "Confirmed" %}
+
+                                            <span class="badge bg-info">
+                                                Confirmed
+                                            </span>
+
+                                        {% elif order.status == "Processing" %}
+
+                                            <span class="badge bg-secondary">
+                                                Processing
+                                            </span>
+
+                                        {% else %}
+
+                                            <span class="badge bg-warning text-dark">
+                                                Pending
+                                            </span>
+
+                                        {% endif %}
+
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>Ordered On</th>
+                                    <td>{{ order.ordered_at }}</td>
+                                </tr>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                    {% endif %}
+
+                    <div class="text-center mt-4">
+
+                        <a
+                            href="{% url 'home' %}"
+                            class="btn btn-outline-dark">
+
+                            Back To Home
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
