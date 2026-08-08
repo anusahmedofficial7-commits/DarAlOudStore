@@ -17,6 +17,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
+    "daraloudstore-5.onrender.com",
 ]
 
 # =====================================
@@ -147,3 +148,4 @@ MEDIA_ROOT = BASE_DIR / "media"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 STATIC_ROOT = BASE_DIR / "staticfiles"
+
