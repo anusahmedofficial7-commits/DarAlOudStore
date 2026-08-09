@@ -1,3 +1,4 @@
+```python
 from pathlib import Path
 
 # =====================================
@@ -6,19 +7,25 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
 # =====================================
 # SECURITY
 # =====================================
 
 SECRET_KEY = "django-insecure-daraloudstore"
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
     "daraloudstore-5.onrender.com",
 ]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://daraloudstore-5.onrender.com",
+]
+
 
 # =====================================
 # INSTALLED APPS
@@ -35,12 +42,17 @@ INSTALLED_APPS = [
     "store.apps.StoreConfig",
 ]
 
+
 # =====================================
 # MIDDLEWARE
 # =====================================
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+
+    # WhiteNoise - static CSS/JS/images
+    "whitenoise.middleware.WhiteNoiseMiddleware",
+
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -49,11 +61,13 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
+
 # =====================================
 # ROOT URLS
 # =====================================
 
 ROOT_URLCONF = "daraloud.urls"
+
 
 # =====================================
 # TEMPLATES
@@ -74,11 +88,13 @@ TEMPLATES = [
     },
 ]
 
+
 # =====================================
 # WSGI
 # =====================================
 
 WSGI_APPLICATION = "daraloud.wsgi.application"
+
 
 # =====================================
 # DATABASE
@@ -90,6 +106,7 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
+
 
 # =====================================
 # PASSWORD VALIDATION
@@ -110,8 +127,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
 # =====================================
-# LANGUAGE
+# LANGUAGE / TIME
 # =====================================
 
 LANGUAGE_CODE = "en-us"
@@ -122,17 +140,30 @@ USE_I18N = True
 
 USE_TZ = True
 
+
 # =====================================
 # STATIC FILES
 # =====================================
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
+
+
+# WhiteNoise static file storage
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
+
 
 # =====================================
 # MEDIA FILES
@@ -142,10 +173,11 @@ MEDIA_URL = "/media/"
 
 MEDIA_ROOT = BASE_DIR / "media"
 
+
 # =====================================
 # DEFAULT PRIMARY KEY
 # =====================================
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-STATIC_ROOT = BASE_DIR / "staticfiles"
+
 
