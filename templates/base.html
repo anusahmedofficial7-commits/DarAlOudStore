@@ -10,35 +10,58 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
+    <meta name="description"
+          content="Dar Al Oud - Luxury Attars & Premium Imported Perfumes">
+
     <title>
         {% block title %}
         Dar Al Oud | Luxury Perfumes
         {% endblock %}
     </title>
 
-    <!-- Bootstrap -->
+
+    <!-- ========================================= -->
+    <!-- BOOTSTRAP -->
+    <!-- ========================================= -->
+
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet"
     >
 
-    <!-- Bootstrap Icons -->
+
+    <!-- ========================================= -->
+    <!-- BOOTSTRAP ICONS -->
+    <!-- ========================================= -->
+
     <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     >
 
-    <!-- Your CSS -->
+
+    <!-- ========================================= -->
+    <!-- CUSTOM CSS -->
+    <!-- ========================================= -->
+
     <link
         rel="stylesheet"
         href="{% static 'css/style.css' %}"
     >
 
-</head>
-
-<body>
 
     <!-- ========================================= -->
+    <!-- EXTRA PAGE CSS -->
+    <!-- ========================================= -->
+
+    {% block extra_css %}
+    {% endblock %}
+
+</head>
+
+
+<body>
+<!-- ========================================= -->
 <!-- NAVBAR -->
 <!-- ========================================= -->
 
@@ -47,16 +70,16 @@
     <div class="container">
 
         <!-- BRAND -->
-        <a class="navbar-brand fw-bold fs-4"
-           href="{% url 'home' %}">
-
+        <a
+            class="navbar-brand fw-bold fs-4"
+            href="{% url 'home' %}"
+        >
             <i class="bi bi-flower1"></i>
             Dar Al Oud
-
         </a>
 
 
-        <!-- MOBILE MENU BUTTON -->
+        <!-- MOBILE MENU -->
         <button
             class="navbar-toggler"
             type="button"
@@ -72,13 +95,14 @@
         </button>
 
 
-        <!-- NAVIGATION LINKS -->
+        <!-- NAVIGATION -->
         <div
             class="collapse navbar-collapse"
             id="mainNavbar"
         >
 
             <ul class="navbar-nav ms-auto align-items-lg-center">
+
 
                 <!-- HOME -->
                 <li class="nav-item">
@@ -150,12 +174,13 @@
                 </li>
 
 
-                <!-- WHATSAPP -->
+                <!-- WHATSAPP ORDER -->
                 <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
 
                     <a
-                        href="https://wa.me/923XXXXXXXXX"
+                        href="https://wa.me/923132527157?text=Assalam-o-Alaikum%20Dar%20Al%20Oud%2C%20mujhe%20perfume%20order%20karna%20hai."
                         target="_blank"
+                        rel="noopener noreferrer"
                         class="btn btn-success btn-sm rounded-pill px-3"
                     >
 
@@ -176,63 +201,67 @@
 
 
 <!-- ========================================= -->
-<!-- MAIN CONTENT START -->
+<!-- MAIN CONTENT -->
 <!-- ========================================= -->
 
 <main class="min-vh-100">
-
-    <!-- ========================================= -->
+<!-- ========================================= -->
 <!-- PAGE CONTENT -->
 <!-- ========================================= -->
 
-<section class="py-4">
+<main class="container-fluid px-0">
 
     {% block content %}
 
     {% endblock %}
 
-</section>
+</main>
 
 
 <!-- ========================================= -->
-<!-- PRICE VISIBILITY FIX -->
+<!-- PRICE / TEXT VISIBILITY FIX -->
 <!-- ========================================= -->
 
 <style>
 
-    /* Price ko white-on-white hone se bachane ke liye */
+    /* ===================================== */
+    /* PRODUCT PRICE */
+    /* ===================================== */
+
     .price,
     .product-price,
+    .price-badge,
     .card .price,
     .card .product-price {
 
         color: #111111 !important;
+
         background-color: transparent !important;
+
         font-weight: 700;
 
     }
 
 
-    /* Rs. price */
-    .text-price {
+    /* ===================================== */
+    /* GENERAL PRODUCT TEXT */
+    /* ===================================== */
 
-        color: #111111 !important;
-        font-weight: 700;
-
-    }
-
-
-    /* Product cards */
     .product-card {
 
-        background-color: #ffffff;
         color: #111111;
+
+        background-color: #ffffff;
 
     }
 
 
-    .product-card h5,
+    .product-card h1,
+    .product-card h2,
+    .product-card h3,
     .product-card h4,
+    .product-card h5,
+    .product-card h6,
     .product-card p {
 
         color: #111111;
@@ -240,14 +269,34 @@
     }
 
 
-    /* Price badge */
-    .price-badge {
+    /* ===================================== */
+    /* PRICE BOX */
+    /* ===================================== */
+
+    .price-box {
 
         color: #111111 !important;
+
         background-color: #f8f9fa !important;
+
         font-weight: 700;
-        padding: 6px 12px;
+
         border-radius: 8px;
+
+        padding: 6px 12px;
+
+    }
+
+
+    /* ===================================== */
+    /* RS PRICE */
+    /* ===================================== */
+
+    .text-price {
+
+        color: #111111 !important;
+
+        font-weight: 700;
 
     }
 
@@ -262,66 +311,103 @@
 
         <div class="row g-4">
 
-            <!-- =============================== -->
-            <!-- WEBSITE -->
-            <!-- =============================== -->
+
+            <!-- ================================= -->
+            <!-- WEBSITE INFO -->
+            <!-- ================================= -->
 
             <div class="col-md-4">
 
                 <h4 class="fw-bold mb-3">
+
                     <i class="bi bi-flower1"></i>
+
                     Dar Al Oud
+
                 </h4>
 
-                <p class="text-light mb-0">
+
+                <p class="text-light mb-2">
+
                     Luxury Attars & Premium Imported Perfumes.
+
                 </p>
 
-                <p class="text-light mt-2">
+
+                <p class="text-light mb-0">
+
                     Discover your signature fragrance
                     with Dar Al Oud.
+
                 </p>
 
             </div>
 
 
-            <!-- =============================== -->
+            <!-- ================================= -->
             <!-- CONTACT -->
-            <!-- =============================== -->
+            <!-- ================================= -->
 
             <div class="col-md-4">
 
                 <h5 class="fw-bold mb-3">
+
                     Contact Us
+
                 </h5>
+
+
+                <!-- PHONE -->
 
                 <p class="mb-2">
 
                     <i class="bi bi-telephone-fill me-2"></i>
 
                     <a
-                        href="tel:+923XXXXXXXXX"
+                        href="tel:+923132527157"
                         class="text-white text-decoration-none"
                     >
-                        +92 3XX XXXXXXX
+                        03132527157
                     </a>
 
                 </p>
 
+
+                <!-- EMAIL -->
 
                 <p class="mb-2">
 
                     <i class="bi bi-envelope-fill me-2"></i>
 
                     <a
-                        href="mailto:info@daraloud.com"
+                        href="mailto:anusalia625@mail.com"
                         class="text-white text-decoration-none"
                     >
-                        info@daraloud.com
+                        anusalia625@mail.com
                     </a>
 
                 </p>
 
+
+                <!-- WHATSAPP -->
+
+                <p class="mb-2">
+
+                    <i class="bi bi-whatsapp me-2"></i>
+
+                    <a
+                        href="https://wa.me/923132527157"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-white text-decoration-none"
+                    >
+                        WhatsApp Order
+                    </a>
+
+                </p>
+
+
+                <!-- WEBSITE -->
 
                 <p class="mb-0">
 
@@ -334,17 +420,23 @@
             </div>
 
 
-            <!-- =============================== -->
+            <!-- ================================= -->
             <!-- QUICK LINKS -->
-            <!-- =============================== -->
+            <!-- ================================= -->
 
             <div class="col-md-4">
 
                 <h5 class="fw-bold mb-3">
+
                     Quick Links
+
                 </h5>
 
-                <ul class="list-unstyled">
+
+                <ul class="list-unstyled mb-0">
+
+
+                    <!-- HOME -->
 
                     <li class="mb-2">
 
@@ -352,12 +444,17 @@
                             href="{% url 'home' %}"
                             class="text-white text-decoration-none"
                         >
+
                             <i class="bi bi-house me-2"></i>
+
                             Home
+
                         </a>
 
                     </li>
 
+
+                    <!-- CART -->
 
                     <li class="mb-2">
 
@@ -365,12 +462,17 @@
                             href="{% url 'cart' %}"
                             class="text-white text-decoration-none"
                         >
+
                             <i class="bi bi-cart3 me-2"></i>
+
                             Cart
+
                         </a>
 
                     </li>
 
+
+                    <!-- WISHLIST -->
 
                     <li class="mb-2">
 
@@ -378,12 +480,35 @@
                             href="{% url 'wishlist' %}"
                             class="text-white text-decoration-none"
                         >
+
                             <i class="bi bi-heart me-2"></i>
+
                             Wishlist
+
                         </a>
 
                     </li>
 
+
+                    <!-- CHECKOUT -->
+
+                    <li class="mb-2">
+
+                        <a
+                            href="{% url 'checkout' %}"
+                            class="text-white text-decoration-none"
+                        >
+
+                            <i class="bi bi-credit-card me-2"></i>
+
+                            Checkout
+
+                        </a>
+
+                    </li>
+
+
+                    <!-- TRACK ORDER -->
 
                     <li>
 
@@ -391,8 +516,11 @@
                             href="{% url 'track_order' %}"
                             class="text-white text-decoration-none"
                         >
+
                             <i class="bi bi-truck me-2"></i>
+
                             Track Order
+
                         </a>
 
                     </li>
@@ -404,17 +532,15 @@
         </div>
 
     </div>
-
-
-    <!-- ===================================== -->
+        <!-- ========================================= -->
     <!-- COPYRIGHT -->
-    <!-- ===================================== -->
+    <!-- ========================================= -->
 
     <div class="border-top border-secondary">
 
         <div class="container py-3 text-center">
 
-            <p class="mb-0">
+            <p class="mb-0 text-white">
 
                 © 2026
                 <strong>Dar Al Oud</strong>.
@@ -427,6 +553,8 @@
     </div>
 
 </footer>
+
+
 <!-- ========================================= -->
 <!-- FLOATING WHATSAPP BUTTON -->
 <!-- ========================================= -->
@@ -434,6 +562,7 @@
 <a
     href="https://wa.me/923132527157?text=Assalam-o-Alaikum%20Dar%20Al%20Oud%2C%20mujhe%20perfume%20order%20karna%20hai."
     target="_blank"
+    rel="noopener noreferrer"
     class="whatsapp-floating"
     aria-label="Order on WhatsApp"
 >
@@ -444,7 +573,7 @@
 
 
 <!-- ========================================= -->
-<!-- WHATSAPP BUTTON STYLE -->
+<!-- WHATSAPP BUTTON CSS -->
 <!-- ========================================= -->
 
 <style>
@@ -463,32 +592,33 @@
 
         background-color: #25D366;
 
-        color: white;
+        color: #ffffff;
 
         display: flex;
+
         align-items: center;
+
         justify-content: center;
 
         font-size: 28px;
 
         text-decoration: none;
 
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.30);
+        box-shadow:
+            0 4px 15px rgba(0, 0, 0, 0.30);
 
         z-index: 9999;
 
-        transition: 0.3s;
+        transition: transform 0.3s ease;
 
     }
 
 
     .whatsapp-floating:hover {
 
+        color: #ffffff;
+
         transform: scale(1.08);
-
-        color: white;
-
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.40);
 
     }
 
@@ -510,8 +640,6 @@
     }
 
 </style>
-
-
 <!-- ========================================= -->
 <!-- BOOTSTRAP JAVASCRIPT -->
 <!-- ========================================= -->
@@ -519,15 +647,25 @@
 <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
 </script>
+
+
 <!-- ========================================= -->
-<!-- MAIN CONTENT END -->
+<!-- EXTRA PAGE JAVASCRIPT -->
+<!-- ========================================= -->
+
+{% block extra_js %}
+{% endblock %}
+
+
+<!-- ========================================= -->
+<!-- CLOSE MAIN CONTENT -->
 <!-- ========================================= -->
 
 </main>
 
 
 <!-- ========================================= -->
-<!-- PAGE END -->
+<!-- CLOSE BODY / HTML -->
 <!-- ========================================= -->
 
 </body>
