@@ -223,7 +223,7 @@ def decrease_quantity(request, pk):
 # REMOVE CART
 # =====================================
 
-def remove_cart(request, pk):
+def remove_from_cart(request, pk):
 
     item = get_object_or_404(
         Cart,
@@ -245,7 +245,8 @@ def checkout(request):
     )
 
     total = sum(
-        item.subtotal for item in items
+        item.subtotal
+        for item in items
     )
 
     return render(
@@ -309,7 +310,6 @@ def place_order(request):
     for item in cart_items:
 
         Order.objects.create(
-
             order_number=order_number,
 
             customer_name=customer_name,
@@ -356,81 +356,13 @@ def track_order(request):
 
     if request.method == "POST":
 
-        order_number = request.POST.get("order_number")
-        phone = request.POST.get("phone")
-
-        try:
-
-            order = Order.objects.get(
-                order_number=order_number,
-                phone=phone
-            )
-
-        except Order.DoesNotExist:
-
-            error = "Order not found. Please check your Order Number and Phone."
-
-    return render(
-        request,
-        "track_order.html",
-        {
-            "order": order,
-            "error": error,
-        }
-    )
-
-
-# =====================================
-# SEARCH
-# =====================================
-
-def search(request):
-
-    query = request.GET.get("q", "")
-
-    perfumes = (
-        Perfume.objects
-        .prefetch_related("sizes")
-        .order_by("-created_at")
-    )
-
-    if query:
-        perfumes = perfumes.filter(
-            name__icontains=query
+        order_number = request.POST.get(
+            "order_number"
         )
 
-    return render(
-        request,
-        "home.html",
-        {
-            "perfumes": perfumes,
-            "query": query,
-        }
-    )# =====================================
-# SUCCESS
-# =====================================
-
-def success(request):
-
-    return render(
-        request,
-        "success.html"
-    )
-
-
-# =====================================
-# TRACK ORDER
-# =====================================
-
-def track_order(request):
-
-    order = None
-    error = None
-
-    if request.method == "POST":
-
-        order_number = request.POST.get("order_number")
-        phone = request.POST.get("phone")
+        phone = request.POST.get(
+            "phone"
+        )
 
         try:
 
@@ -441,7 +373,10 @@ def track_order(request):
 
         except Order.DoesNotExist:
 
-            error = "Order not found. Please check your Order Number and Phone."
+            error = (
+                "Order not found. "
+                "Please check your Order Number and Phone."
+            )
 
     return render(
         request,
