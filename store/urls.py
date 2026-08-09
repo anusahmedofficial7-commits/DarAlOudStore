@@ -1,5 +1,4 @@
 from django.urls import path
-
 from . import views
 
 
@@ -28,7 +27,7 @@ urlpatterns = [
 
 
     # =====================================
-    # PRODUCT
+    # PRODUCT DETAIL
     # =====================================
 
     path(
@@ -66,9 +65,12 @@ urlpatterns = [
         name="decrease_quantity",
     ),
 
+    # IMPORTANT:
+    # views.py mein function ka naam remove_from_cart hai
+    # URL name remove_cart hi rakha gaya hai
     path(
         "remove-cart/<int:pk>/",
-        views.remove_cart,
+        views.remove_from_cart,
         name="remove_cart",
     ),
 
@@ -133,4 +135,5 @@ urlpatterns = [
         views.track_order,
         name="track_order",
     ),
+
 ]
