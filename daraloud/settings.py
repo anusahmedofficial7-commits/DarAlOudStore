@@ -13,7 +13,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY
 # =====================================
 
-SECRET_KEY = "django-insecure-daraloudstore"
+SECRET_KEY = os.environ.get(
+    "DJANGO_SECRET_KEY",
+    "django-insecure-daraloudstore"
+)
 
 DEBUG = False
 
@@ -22,6 +25,7 @@ ALLOWED_HOSTS = [
     "localhost",
     "daraloudstore-5.onrender.com",
 ]
+
 
 CSRF_TRUSTED_ORIGINS = [
     "https://daraloudstore-5.onrender.com",
@@ -33,6 +37,8 @@ CSRF_TRUSTED_ORIGINS = [
 # =====================================
 
 INSTALLED_APPS = [
+
+    # Django
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -54,6 +60,7 @@ INSTALLED_APPS = [
 # =====================================
 
 MIDDLEWARE = [
+
     "django.middleware.security.SecurityMiddleware",
 
     # WhiteNoise
@@ -82,10 +89,13 @@ ROOT_URLCONF = "daraloud.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
+
         "DIRS": [
             BASE_DIR / "templates"
         ],
+
         "APP_DIRS": True,
+
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.request",
@@ -121,17 +131,29 @@ DATABASES = {
 # =====================================
 
 AUTH_PASSWORD_VALIDATORS = [
+
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+        "NAME":
+            "django.contrib.auth.password_validation."
+            "UserAttributeSimilarityValidator",
     },
+
     {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+        "NAME":
+            "django.contrib.auth.password_validation."
+            "MinimumLengthValidator",
     },
+
     {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+        "NAME":
+            "django.contrib.auth.password_validation."
+            "CommonPasswordValidator",
     },
+
     {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+        "NAME":
+            "django.contrib.auth.password_validation."
+            "NumericPasswordValidator",
     },
 ]
 
@@ -167,14 +189,19 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 # =====================================
 
 STORAGES = {
-    # USER UPLOADED MEDIA -> CLOUDINARY
+
+    # USER UPLOADED IMAGES
+    # Cloudinary
     "default": {
-        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+        "BACKEND":
+            "cloudinary_storage.storage.MediaCloudinaryStorage",
     },
 
-    # CSS / JS / ADMIN STATIC -> WHITENOISE
+    # CSS / JS / Admin Static Files
+    # WhiteNoise
     "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+        "BACKEND":
+            "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
 
@@ -184,9 +211,18 @@ STORAGES = {
 # =====================================
 
 CLOUDINARY_STORAGE = {
-    "CLOUD_NAME": os.environ.get("CLOUDINARY_CLOUD_NAME"),
-    "API_KEY": os.environ.get("CLOUDINARY_API_KEY"),
-    "API_SECRET": os.environ.get("CLOUDINARY_API_SECRET"),
+
+    "CLOUD_NAME": os.environ.get(
+        "CLOUDINARY_CLOUD_NAME"
+    ),
+
+    "API_KEY": os.environ.get(
+        "CLOUDINARY_API_KEY"
+    ),
+
+    "API_SECRET": os.environ.get(
+        "CLOUDINARY_API_SECRET"
+    ),
 }
 
 
@@ -195,8 +231,6 @@ CLOUDINARY_STORAGE = {
 # =====================================
 
 MEDIA_URL = "/media/"
-
-MEDIA_ROOT = BASE_DIR / "media"
 
 
 # =====================================

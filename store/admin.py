@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.utils.html import format_html
+
 from .models import (
     Perfume,
     PerfumeSize,
@@ -9,7 +11,7 @@ from .models import (
 
 
 # =====================================
-# PERFUME ADMIN
+# PERFUME SIZE INLINE
 # =====================================
 
 class PerfumeSizeInline(admin.TabularInline):
@@ -17,10 +19,15 @@ class PerfumeSizeInline(admin.TabularInline):
     extra = 3
 
 
+# =====================================
+# PERFUME ADMIN
+# =====================================
+
 @admin.register(Perfume)
 class PerfumeAdmin(admin.ModelAdmin):
 
     list_display = (
+        "image_preview",
         "name",
         "brand",
         "category",
@@ -42,6 +49,22 @@ class PerfumeAdmin(admin.ModelAdmin):
     inlines = [
         PerfumeSizeInline,
     ]
+
+    readonly_fields = (
+        "image_preview",
+    )
+
+    def image_preview(self, obj):
+        if obj.image:
+            return format_html(
+                '<img src="{}" width="70" height="70" '
+                'style="object-fit:cover;border-radius:8px;" />',
+                obj.image.url
+            )
+
+        return "No Image"
+
+    image_preview.short_description = "Image"
 
 
 # =====================================
@@ -148,4 +171,3 @@ class OrderAdmin(admin.ModelAdmin):
     )
 
     list_per_page = 20
-    
