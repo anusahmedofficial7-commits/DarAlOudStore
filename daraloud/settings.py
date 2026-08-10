@@ -13,10 +13,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY
 # =====================================
 
-SECRET_KEY = os.environ.get(
-    "SECRET_KEY",
-    "django-insecure-daraloudstore"
-)
+SECRET_KEY = "django-insecure-daraloudstore"
 
 DEBUG = False
 
@@ -58,6 +55,8 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+
+    # WhiteNoise
     "whitenoise.middleware.WhiteNoiseMiddleware",
 
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -83,13 +82,10 @@ ROOT_URLCONF = "daraloud.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-
         "DIRS": [
-            BASE_DIR / "templates",
+            BASE_DIR / "templates"
         ],
-
         "APP_DIRS": True,
-
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.request",
@@ -126,28 +122,16 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": (
-            "django.contrib.auth.password_validation."
-            "UserAttributeSimilarityValidator"
-        ),
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
-        "NAME": (
-            "django.contrib.auth.password_validation."
-            "MinimumLengthValidator"
-        ),
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
     },
     {
-        "NAME": (
-            "django.contrib.auth.password_validation."
-            "CommonPasswordValidator"
-        ),
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
     },
     {
-        "NAME": (
-            "django.contrib.auth.password_validation."
-            "NumericPasswordValidator"
-        ),
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
 
@@ -183,15 +167,14 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 # =====================================
 
 STORAGES = {
+    # USER UPLOADED MEDIA -> CLOUDINARY
     "default": {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
     },
 
+    # CSS / JS / ADMIN STATIC -> WHITENOISE
     "staticfiles": {
-        "BACKEND": (
-            "whitenoise.storage."
-            "CompressedManifestStaticFilesStorage"
-        ),
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
 
@@ -201,22 +184,14 @@ STORAGES = {
 # =====================================
 
 CLOUDINARY_STORAGE = {
-    "CLOUD_NAME": os.environ.get(
-        "CLOUDINARY_CLOUD_NAME"
-    ),
-
-    "API_KEY": os.environ.get(
-        "CLOUDINARY_API_KEY"
-    ),
-
-    "API_SECRET": os.environ.get(
-        "CLOUDINARY_API_SECRET"
-    ),
+    "CLOUD_NAME": os.environ.get("CLOUDINARY_CLOUD_NAME"),
+    "API_KEY": os.environ.get("CLOUDINARY_API_KEY"),
+    "API_SECRET": os.environ.get("CLOUDINARY_API_SECRET"),
 }
 
 
 # =====================================
-# MEDIA FILES
+# MEDIA
 # =====================================
 
 MEDIA_URL = "/media/"
