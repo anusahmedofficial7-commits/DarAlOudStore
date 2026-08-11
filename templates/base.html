@@ -10,519 +10,86 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <meta name="description"
-          content="Dar Al Oud - Luxury Attars & Premium Imported Perfumes">
-
     <title>
         {% block title %}
-        Dar Al Oud | Luxury Perfumes
+        Dar Al Oud | Luxury Perfume Store
         {% endblock %}
     </title>
 
-
-    <!-- ========================================= -->
-    <!-- BOOTSTRAP -->
-    <!-- ========================================= -->
-
+    <!-- Bootstrap -->
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet"
     >
 
-
-    <!-- ========================================= -->
-    <!-- BOOTSTRAP ICONS -->
-    <!-- ========================================= -->
-
-    <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-    >
-
-
-    <!-- ========================================= -->
-    <!-- CUSTOM CSS -->
-    <!-- ========================================= -->
-
+    <!-- Custom CSS -->
     <link
         rel="stylesheet"
         href="{% static 'css/style.css' %}"
     >
 
-
-    <!-- ========================================= -->
-    <!-- EXTRA PAGE CSS -->
-    <!-- ========================================= -->
-
-    {% block extra_css %}
-    {% endblock %}
-
 </head>
 
-
 <body>
-<!-- ========================================= -->
-<!-- NAVBAR -->
-<!-- ========================================= -->
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+    <!-- ============================= -->
+    <!-- NAVBAR - PART 1 -->
+    <!-- ============================= -->
 
-    <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
 
-        <!-- BRAND -->
-        <a
-            class="navbar-brand fw-bold fs-4"
-            href="{% url 'home' %}"
-        >
-            <i class="bi bi-flower1"></i>
-            Dar Al Oud
-        </a>
+        <div class="container">
 
+            <a class="navbar-brand fw-bold"
+               href="{% url 'home' %}">
+                🖤 Dar Al Oud
+            </a>
 
-        <!-- MOBILE MENU -->
-        <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#mainNavbar"
-            aria-controls="mainNavbar"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-        >
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
 
-            <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
 
-        </button>
+            </button>
 
+            <div
+                class="collapse navbar-collapse"
+                id="mainNavbar">
 
-        <!-- NAVIGATION -->
-        <div
-            class="collapse navbar-collapse"
-            id="mainNavbar"
-        >
+                <ul class="navbar-nav ms-auto">
 
-            <ul class="navbar-nav ms-auto align-items-lg-center">
-
-
-                <!-- HOME -->
-                <li class="nav-item">
-
-                    <a
-                        class="nav-link"
-                        href="{% url 'home' %}"
-                    >
-                        <i class="bi bi-house"></i>
-                        Home
-                    </a>
-
-                </li>
-
-
-                <!-- CART -->
-                <li class="nav-item">
-
-                    <a
-                        class="nav-link"
-                        href="{% url 'cart' %}"
-                    >
-                        <i class="bi bi-cart3"></i>
-                        Cart
-                    </a>
-
-                </li>
-
-
-                <!-- WISHLIST -->
-                <li class="nav-item">
-
-                    <a
-                        class="nav-link"
-                        href="{% url 'wishlist' %}"
-                    >
-                        <i class="bi bi-heart"></i>
-                        Wishlist
-                    </a>
-
-                </li>
-
-
-                <!-- CHECKOUT -->
-                <li class="nav-item">
-
-                    <a
-                        class="nav-link"
-                        href="{% url 'checkout' %}"
-                    >
-                        <i class="bi bi-credit-card"></i>
-                        Checkout
-                    </a>
-
-                </li>
-
-
-                <!-- TRACK ORDER -->
-                <li class="nav-item">
-
-                    <a
-                        class="nav-link"
-                        href="{% url 'track_order' %}"
-                    >
-                        <i class="bi bi-truck"></i>
-                        Track Order
-                    </a>
-
-                </li>
-
-
-                <!-- WHATSAPP ORDER -->
-                <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
-
-                    <a
-                        href="https://wa.me/923132527157?text=Assalam-o-Alaikum%20Dar%20Al%20Oud%2C%20mujhe%20perfume%20order%20karna%20hai."
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="btn btn-success btn-sm rounded-pill px-3"
-                    >
-
-                        <i class="bi bi-whatsapp"></i>
-                        WhatsApp Order
-
-                    </a>
-
-                </li>
-
-            </ul>
-
-        </div>
-
-    </div>
-
-</nav>
-
-
-<!-- ========================================= -->
-<!-- MAIN CONTENT -->
-<!-- ========================================= -->
-
-<main class="min-vh-100">
-<!-- ========================================= -->
-<!-- PAGE CONTENT -->
-<!-- ========================================= -->
-
-<main class="container-fluid px-0">
-
-    {% block content %}
-
-    {% endblock %}
-
-</main>
-
-
-<!-- ========================================= -->
-<!-- PRICE / TEXT VISIBILITY FIX -->
-<!-- ========================================= -->
-
-<style>
-
-    /* ===================================== */
-    /* PRODUCT PRICE */
-    /* ===================================== */
-
-    .price,
-    .product-price,
-    .price-badge,
-    .card .price,
-    .card .product-price {
-
-        color: #111111 !important;
-
-        background-color: transparent !important;
-
-        font-weight: 700;
-
-    }
-
-
-    /* ===================================== */
-    /* GENERAL PRODUCT TEXT */
-    /* ===================================== */
-
-    .product-card {
-
-        color: #111111;
-
-        background-color: #ffffff;
-
-    }
-
-
-    .product-card h1,
-    .product-card h2,
-    .product-card h3,
-    .product-card h4,
-    .product-card h5,
-    .product-card h6,
-    .product-card p {
-
-        color: #111111;
-
-    }
-
-
-    /* ===================================== */
-    /* PRICE BOX */
-    /* ===================================== */
-
-    .price-box {
-
-        color: #111111 !important;
-
-        background-color: #f8f9fa !important;
-
-        font-weight: 700;
-
-        border-radius: 8px;
-
-        padding: 6px 12px;
-
-    }
-
-
-    /* ===================================== */
-    /* RS PRICE */
-    /* ===================================== */
-
-    .text-price {
-
-        color: #111111 !important;
-
-        font-weight: 700;
-
-    }
-
-</style>
-<!-- ========================================= -->
-<!-- FOOTER -->
-<!-- ========================================= -->
-
-<footer class="bg-dark text-white mt-5">
-
-    <div class="container py-5">
-
-        <div class="row g-4">
-
-
-            <!-- ================================= -->
-            <!-- WEBSITE INFO -->
-            <!-- ================================= -->
-
-            <div class="col-md-4">
-
-                <h4 class="fw-bold mb-3">
-
-                    <i class="bi bi-flower1"></i>
-
-                    Dar Al Oud
-
-                </h4>
-
-
-                <p class="text-light mb-2">
-
-                    Luxury Attars & Premium Imported Perfumes.
-
-                </p>
-
-
-                <p class="text-light mb-0">
-
-                    Discover your signature fragrance
-                    with Dar Al Oud.
-
-                </p>
-
-            </div>
-
-
-            <!-- ================================= -->
-            <!-- CONTACT -->
-            <!-- ================================= -->
-
-            <div class="col-md-4">
-
-                <h5 class="fw-bold mb-3">
-
-                    Contact Us
-
-                </h5>
-
-
-                <!-- PHONE -->
-
-                <p class="mb-2">
-
-                    <i class="bi bi-telephone-fill me-2"></i>
-
-                    <a
-                        href="tel:+923132527157"
-                        class="text-white text-decoration-none"
-                    >
-                        03132527157
-                    </a>
-
-                </p>
-
-
-                <!-- EMAIL -->
-
-                <p class="mb-2">
-
-                    <i class="bi bi-envelope-fill me-2"></i>
-
-                    <a
-                        href="mailto:anusalia625@mail.com"
-                        class="text-white text-decoration-none"
-                    >
-                        anusalia625@mail.com
-                    </a>
-
-                </p>
-
-
-                <!-- WHATSAPP -->
-
-                <p class="mb-2">
-
-                    <i class="bi bi-whatsapp me-2"></i>
-
-                    <a
-                        href="https://wa.me/923132527157"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="text-white text-decoration-none"
-                    >
-                        WhatsApp Order
-                    </a>
-
-                </p>
-
-
-                <!-- WEBSITE -->
-
-                <p class="mb-0">
-
-                    <i class="bi bi-globe2 me-2"></i>
-
-                    Dar Al Oud
-
-                </p>
-
-            </div>
-
-
-            <!-- ================================= -->
-            <!-- QUICK LINKS -->
-            <!-- ================================= -->
-
-            <div class="col-md-4">
-
-                <h5 class="fw-bold mb-3">
-
-                    Quick Links
-
-                </h5>
-
-
-                <ul class="list-unstyled mb-0">
-
-
-                    <!-- HOME -->
-
-                    <li class="mb-2">
-
-                        <a
-                            href="{% url 'home' %}"
-                            class="text-white text-decoration-none"
-                        >
-
-                            <i class="bi bi-house me-2"></i>
-
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{% url 'home' %}">
                             Home
-
                         </a>
-
                     </li>
 
-
-                    <!-- CART -->
-
-                    <li class="mb-2">
-
-                        <a
-                            href="{% url 'cart' %}"
-                            class="text-white text-decoration-none"
-                        >
-
-                            <i class="bi bi-cart3 me-2"></i>
-
-                            Cart
-
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{% url 'cart' %}">
+                            🛒 Cart
                         </a>
-
                     </li>
 
-
-                    <!-- WISHLIST -->
-
-                    <li class="mb-2">
-
-                        <a
-                            href="{% url 'wishlist' %}"
-                            class="text-white text-decoration-none"
-                        >
-
-                            <i class="bi bi-heart me-2"></i>
-
-                            Wishlist
-
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{% url 'wishlist' %}">
+                            ❤️ Wishlist
                         </a>
-
                     </li>
 
-
-                    <!-- CHECKOUT -->
-
-                    <li class="mb-2">
-
-                        <a
-                            href="{% url 'checkout' %}"
-                            class="text-white text-decoration-none"
-                        >
-
-                            <i class="bi bi-credit-card me-2"></i>
-
-                            Checkout
-
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{% url 'track_order' %}">
+                            📦 Track Order
                         </a>
-
-                    </li>
-
-
-                    <!-- TRACK ORDER -->
-
-                    <li>
-
-                        <a
-                            href="{% url 'track_order' %}"
-                            class="text-white text-decoration-none"
-                        >
-
-                            <i class="bi bi-truck me-2"></i>
-
-                            Track Order
-
-                        </a>
-
                     </li>
 
                 </ul>
@@ -531,143 +98,160 @@
 
         </div>
 
-    </div>
-        <!-- ========================================= -->
-    <!-- COPYRIGHT -->
-    <!-- ========================================= -->
+    </nav>
 
-    <div class="border-top border-secondary">
+        <!-- ============================= -->
+    <!-- MAIN CONTENT -->
+    <!-- ============================= -->
 
-        <div class="container py-3 text-center">
+    <main>
 
-            <p class="mb-0 text-white">
+        {% block content %}
+        {% endblock %}
 
-                © 2026
-                <strong>Dar Al Oud</strong>.
-                All Rights Reserved.
+    </main>
 
+
+    <!-- ============================= -->
+    <!-- WHATSAPP BUTTON -->
+    <!-- ============================= -->
+
+    <a
+        href="https://wa.me/923132527157"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="whatsapp-button"
+        aria-label="Order on WhatsApp">
+
+        💬 WhatsApp Order
+
+    </a>
+        <!-- ============================= -->
+    <!-- FOOTER -->
+    <!-- ============================= -->
+
+    <footer class="bg-dark text-white mt-5 py-4">
+
+        <div class="container text-center">
+
+            <h5 class="fw-bold">
+                🖤 Dar Al Oud
+            </h5>
+
+            <p class="mb-2">
+                Luxury Attars & Premium Imported Perfumes
+            </p>
+
+            <p class="mb-0">
+                © 2026 Dar Al Oud. All Rights Reserved.
             </p>
 
         </div>
 
-    </div>
-
-</footer>
+    </footer>
 
 
-<!-- ========================================= -->
-<!-- FLOATING WHATSAPP BUTTON -->
-<!-- ========================================= -->
+    <!-- ============================= -->
+    <!-- BOOTSTRAP JAVASCRIPT -->
+    <!-- ============================= -->
 
-<a
-    href="https://wa.me/923132527157?text=Assalam-o-Alaikum%20Dar%20Al%20Oud%2C%20mujhe%20perfume%20order%20karna%20hai."
-    target="_blank"
-    rel="noopener noreferrer"
-    class="whatsapp-floating"
-    aria-label="Order on WhatsApp"
->
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
+        <!-- ============================= -->
+    <!-- WHATSAPP BUTTON STYLE -->
+    <!-- ============================= -->
 
-    <i class="bi bi-whatsapp"></i>
+    <style>
 
-</a>
+        .whatsapp-button {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
 
+            background-color: #25D366;
+            color: white;
 
-<!-- ========================================= -->
-<!-- WHATSAPP BUTTON CSS -->
-<!-- ========================================= -->
+            padding: 12px 20px;
 
-<style>
+            border-radius: 50px;
 
-    .whatsapp-floating {
+            text-decoration: none;
 
-        position: fixed;
+            font-weight: bold;
 
-        right: 20px;
-        bottom: 20px;
+            font-size: 15px;
 
-        width: 58px;
-        height: 58px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 
-        border-radius: 50%;
+            z-index: 9999;
 
-        background-color: #25D366;
+            transition: 0.3s;
+        }
 
-        color: #ffffff;
+        .whatsapp-button:hover {
+            color: white;
 
-        display: flex;
+            transform: scale(1.05);
 
-        align-items: center;
+            text-decoration: none;
+        }
 
-        justify-content: center;
+    </style>
+        <!-- ============================= -->
+    <!-- EXTRA MOBILE WHATSAPP STYLE -->
+    <!-- ============================= -->
 
-        font-size: 28px;
+    <style>
 
-        text-decoration: none;
+        @media (max-width: 576px) {
 
-        box-shadow:
-            0 4px 15px rgba(0, 0, 0, 0.30);
+            .whatsapp-button {
+                right: 12px;
+                bottom: 12px;
 
-        z-index: 9999;
+                padding: 10px 16px;
 
-        transition: transform 0.3s ease;
+                font-size: 14px;
 
-    }
-
-
-    .whatsapp-floating:hover {
-
-        color: #ffffff;
-
-        transform: scale(1.08);
-
-    }
-
-
-    @media (max-width: 576px) {
-
-        .whatsapp-floating {
-
-            width: 52px;
-            height: 52px;
-
-            right: 15px;
-            bottom: 15px;
-
-            font-size: 25px;
+                border-radius: 40px;
+            }
 
         }
 
-    }
-
-</style>
-<!-- ========================================= -->
-<!-- BOOTSTRAP JAVASCRIPT -->
-<!-- ========================================= -->
-
-<script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
-</script>
+    </style>
 
 
-<!-- ========================================= -->
-<!-- EXTRA PAGE JAVASCRIPT -->
-<!-- ========================================= -->
+    <!-- ============================= -->
+    <!-- CUSTOM JAVASCRIPT BLOCK -->
+    <!-- ============================= -->
 
-{% block extra_js %}
-{% endblock %}
+    {% block extra_js %}
+    {% endblock %}
+    <!-- ============================= -->
+    <!-- WHATSAPP FLOATING BUTTON -->
+    <!-- ============================= -->
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
 
-<!-- ========================================= -->
-<!-- CLOSE MAIN CONTENT -->
-<!-- ========================================= -->
+            const whatsappButton =
+                document.querySelector(".whatsapp-button");
 
-</main>
+            if (whatsappButton) {
 
+                whatsappButton.addEventListener("click", function () {
 
-<!-- ========================================= -->
-<!-- CLOSE BODY / HTML -->
-<!-- ========================================= -->
+                    console.log(
+                        "WhatsApp Order: 03132527157"
+                    );
 
+                });
+
+            }
+
+        });
+    </script>
 </body>
 
 </html>
